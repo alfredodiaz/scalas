@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+script="$1"
+shift
+  
+SBT_HOME=/usr/share/sbt
+
+java \
+    -Dsbt.main.class=sbt.ScriptMain \
+    -Dsbt.boot.directory=$HOME/.sbt/boot \
+    -jar $SBT_HOME/bin/sbt-launch.jar \
+    --error "$script" "$@"
